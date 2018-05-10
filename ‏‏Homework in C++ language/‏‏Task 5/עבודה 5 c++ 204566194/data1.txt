@@ -1,0 +1,37 @@
+2
+Moshe Cohen
+123456789
+1 1 1999
+83.333
+Bat Sheva Levi
+022233300
+2 2 1992
+78
+1
+Mordechai Moti Rozen
+033322211
+3 3 1993
+80.05
+1
+Efrat Golan
+SCE
+22
+12300
+3
+Israela Israeli
+SCE
+48
+12345.67
+Lior Epstein
+Bank MyBank
+6
+17002
+Ronen Stern
+SCE
+3
+9999.99
+1
+Dina Tzarfati
+BigFactory of Israel LTD
+13
+7707.07
