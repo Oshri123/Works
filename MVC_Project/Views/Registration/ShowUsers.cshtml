@@ -1,0 +1,100 @@
+﻿@model Project.Models.User
+
+@{
+    ViewBag.Title = "ShowUsers";
+}
+@{
+    if (Model.IsManager == 0)
+    {
+        @Html.Partial("EccessError")
+
+    }
+    else
+    {
+        <meta name="viewport" content="width=device-width" />
+        <title>ShowUsers</title>
+
+        <style type="text/css">
+            h1 {
+                font-size: 50px;
+                font-family: arial;
+            }
+
+            h2 {
+                font-size: 15px;
+                font-family: courier;
+            }
+
+            p {
+                font-size: 30px;
+                font-family: "times new roman";
+                border-color: black;
+            }
+
+            table {
+                font-size: 20px;
+                font-family: "times new roman";
+                color: black;
+            }
+
+            td {
+                font-size: 20px;
+                font-family: "times new roman";
+                color: black;
+            }
+        </style>
+
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+        <div class="jumbotron">
+
+
+            <h1 style="color:black">Users Data</h1>
+            <hr size="2" width="320" align="left" color="black" />
+
+            <table border="3" id="userTable" style="color:white">
+                <tr>
+                    <th><span style="color:green">User Name</span></th>
+                    <th><span style="color:green">Password</span></th>
+                    <th><span style="color:green">First Name</span></th>
+                    <th><span style="color:green">Last Name</span></th>
+                    <th><span style="color:green">Loved Pet</span></th>
+                    <th><span style="color:green">Purchased Pet</span></th>
+
+                </tr>
+            </table>
+
+            <div id="status"></div>
+
+            <script language="javascript">
+
+                $("#status").text("Loading.....");
+                $.get("GetUsersByJason", null, BindDada);
+
+                function BindDada(usersInfo) {
+
+                    var tbl = $("#userTable");
+
+                    for (k = 0; k < usersInfo.length; k++) {
+                        var newRow = "<tr>"
+                            + "<td>" + usersInfo[k].UserName + "</td>"
+                            + "<td>" + usersInfo[k].Password + "</td>"
+                            + "<td>" + usersInfo[k].FirstName + "</td>"
+                            + "<td>" + usersInfo[k].LastName + "</td>"
+                            + "<td>" + usersInfo[k].LovedPet + "</td>"
+                            + "<td>" + usersInfo[k].PurchasedPet + "</td>"
+                            + "</tr>"
+
+                        tbl.append(newRow);
+                    }
+
+                    $("#status").text("");
+                }
+
+            </script>
+        </div>
+        @Html.Partial("DisplayLayout", Model)
+    }
+}

@@ -1,0 +1,54 @@
+﻿@model Project.Models.User
+
+@{
+    ViewBag.Title = "PetsCarsTips";
+}
+<div class="jumbotron">
+
+    <h1>Pets Care Tips</h1>
+    <p style="color:dimgrey;font-size:25px">
+        Pet care requires a lot of knowledge and guidance on how to grow and treat them correctly.
+        <br />
+        On this site you can purchase some tips in pet care.
+    </p>
+</div>
+
+<h2 style="color:saddlebrown">Cats Tips:</h2>
+<div class="row">
+    <section class="section section-light">
+
+        <iframe width="440" height="260" src="https://www.youtube.com/embed/Si-yk1KxYX0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <iframe width="440" height="260" src="https://www.youtube.com/embed/Xz6yBbBRr8Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    </section>
+</div>
+
+<h2 style="color:saddlebrown">Dogs Tips:</h2>
+<div class="row">
+
+    <section class="section section-light">
+        <iframe width="440" height="260" src="https://www.youtube.com/embed/fbA-O4D0AUU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <iframe width="440" height="260" src="https://www.youtube.com/embed/Ro0KH6hAnHA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </section>
+</div>
+
+<h2 style="color:saddlebrown">Fish Tips:</h2>
+<div class="row">
+
+    <section class="section section-light">
+        <iframe width="440" height="260" src="https://www.youtube.com/embed/ru639adT4Ss" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <iframe width="440" height="260" src="https://www.youtube.com/embed/tcm4y-fC1oA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </section>
+</div>
+<div class="row">
+    <div class="col-md-4" style="font-family:'Guttman Stam';color:crimson">
+        <h2>More Tips:</h2>
+        <p>You can easily find more video tips that offers you more info.</p>
+        <p><a class="btn btn-default" href="https://www.youtube.com/channel/UCQ4k71uQHLwNV3fODU2yIow">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+@Html.Partial("DisplayLayout", Model)

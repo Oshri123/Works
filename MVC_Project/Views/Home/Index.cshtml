@@ -1,0 +1,126 @@
+﻿@model Project.Models.User
+@using Project.ModelView
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div >
+    <h1 >Pets Store</h1>
+    <p class="lead">
+        @{
+            if (Model.UserName != null )
+            {
+                <h2 style="color:dimgrey">Walcome @Model.UserName!</h2>
+            }
+            else
+            {
+                <h2 style="color:dimgrey">Walcome gust!</h2>
+            }
+        }
+        <br />
+        in this site you can buy cars online!
+
+    </p>
+</div>
+
+<div class="row">
+
+    @{if (Model.UserName != null)
+            {
+            <div class="col-md-4">
+                <h2>Logout</h2>
+                <p>Want to logout?</p>
+                <p><a style="font-size:20px">@Html.ActionLink("Logout", "Index", "Home", null, new { @class = "btn btn-default" }) &raquo;</a></p>
+                
+            </div>
+
+            if (Model.IsManager == 1)
+            {
+                <div class="col-md-4">
+                    <h2>Add Pets</h2>
+                    <p>You can add pets to the store</p>
+                    <p><a style="font-size:20px"> @Html.ActionLink("Add Pets", "AddPets", "Pets", Model, new { @class = "btn btn-default" }) &raquo;</a></p>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>Show Users</h2>
+                    <p>You can see the data of all those users listed on the site</p>
+                    <p><a style="font-size:20px"> @Html.ActionLink("Show Users", "ShowUsers", "Registration", Model, new { @class = "btn btn-default" }) &raquo;</a></p>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>Read Feedbacks</h2>
+                    <p>You can read the feedback of all those who writed.</p>
+                    <p><a style="font-size:20px"> @Html.ActionLink("Read Feedback", "ReadingFeedback", "Home", Model, new { @class = "btn btn-default" }) &raquo;</a></p>
+                </div>
+
+            }
+            else
+            {
+                <div class="col-md-4">
+                    <h2>Buy Pets</h2>
+                    <p>You can buy a pet.</p>
+                    <p><a style="font-size:20px"> @Html.ActionLink("Buy Pet", "BuyPet", "Pets", Model, new { @class = "btn btn-default" }) &raquo;</a></p>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>Shopping Cart</h2>
+                    <p>You can watch the pets you have purchased.</p>
+                    <p><a style="font-size:20px"> @Html.ActionLink("Watch cart", "GetShoppingCart", "Home", Model, new { @class = "btn btn-default" }) &raquo;</a></p>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>Pets Care Tips</h2>
+                    <p>You can take some tips for pets care.</p>
+                    <p><a style="font-size:20px"> @Html.ActionLink("Get Tips", "PetsCareTips", "Home", Model, new { @class = "btn btn-default" }) &raquo;</a></p>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>Write Feedbacks</h2>
+                    <p>You can write a feedback.</p>
+                    <p><a style="font-size:20px"> @Html.ActionLink("Write Feedback", "WritingFeedback", "Home", Model, new { @class = "btn btn-default" }) &raquo;</a></p>
+                </div>
+            }
+        }
+        else 
+        {
+            <div class="col-md-4">
+                <h2>Login Page</h2>
+                <p>This site give you the option to login and buy Pets!</p>
+                <p><a style="font-size:20px" class="btn btn-default" href="../Registration/Enter">Login &raquo;</a></p>
+            </div>
+            
+            <div class="col-md-4">
+                <h2>Pets Store</h2>
+                <p>You can take visit in our PetsStore, have a nice visit.. :)</p>
+                <p><a style="font-size:20px"> @Html.ActionLink("Show Store", "PetsStore", "Pets",null ,new { @class = "btn btn-default" }) &raquo;</a></p>
+            </div>
+
+            <div class="col-md-4">
+                <h2>Pets Care Tips</h2>
+                <p>You can take some tips for pets care.</p>
+                <br />
+                <br />
+                <p><a style="font-size:20px"> @Html.ActionLink("Get Tips", "PetsCareTips", "Home", Model, new { @class = "btn btn-default" }) &raquo;</a></p>
+            </div>
+
+            <div class="col-md-4">
+                <h2>Write Feedbacks</h2>
+                <p>You can write a feedback.</p>
+                <p><a style="font-size:20px"> @Html.ActionLink("Write Feedback", "WritingFeedback", "Home", Model, new { @class = "btn btn-default" }) &raquo;</a></p>
+            </div>
+        }
+    }
+
+    @*<div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>*@
+
+
+
+</div>
+
+@Html.Partial("DisplayLayout", Model)

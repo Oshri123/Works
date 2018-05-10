@@ -1,0 +1,42 @@
+﻿@model Project.ModelView.PetsViewModel
+@using Project.Models
+@{
+    ViewBag.Title = "PetsStore";
+}
+
+
+<h1 style="font-size:70px">Pets Store</h1>
+
+<div class="row">
+    <div class="col-md-4" style="color:dimgrey;font-size:20px">
+        In this page you can't purchase , just watch.
+        <br />
+        If you want to buy you must have account and login into the site!
+    </div>
+    <div class="col-md-4">
+        <img src="http://biz.prlog.org/orpetsupplies/logo.png"
+             width="254" height="254" alt="webmaster logo" style="align-items:center" />
+    </div>
+</div>
+
+<br />
+
+
+@{
+    WebGrid obj = new WebGrid(Model.pets);
+}
+<div id="gridContent" style=" padding:20px; ">
+    @obj.GetHtml(
+tableStyle: "webgrid-table",
+headerStyle: "webgrid-header",
+alternatingRowStyle: "webgrid-alternating-row",
+mode: WebGridPagerModes.All,
+columns: obj.Columns(
+    obj.Column("PetType", header: "Pet Type", canSort: true),
+    obj.Column("petName", "Pet Name", canSort: true, style: "petName"),
+    obj.Column("petPrice", "Pet Price", canSort: true, style: "petPrice"),
+    obj.Column("petID", "Pet ID", canSort: true, style: "petID"),
+    obj.Column("Availability", "Availability", canSort: true, style: "Availability")
+))
+</div>
+@Html.Partial("DisplayLayout", new User())

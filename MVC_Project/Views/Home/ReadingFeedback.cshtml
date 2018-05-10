@@ -1,0 +1,59 @@
+﻿@model Project.Models.User
+@{
+            ViewBag.Title = "ReadingFeedback";
+}
+
+@{
+    if (Model.IsManager == 0)
+    {
+        @Html.Partial("EccessError")
+
+    }
+    else
+    {
+
+            <script src="~/Scripts/jquery-1.10.2.js"></script>
+            <script src="~/Scripts/jquery.validate.js"></script>
+            <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+            <h1>&nbsp; Feedback Data</h1>
+            <hr size="2" width="290" align="left" color="black" />
+
+            <table border="3" id="feedbackTable" style="color:black">
+                <tr>
+                    <th><span style="color:green">Writed the feedback:</span></th>
+                    <th><span style="color:green">The Feedback:</span></th>
+                </tr>
+            </table>
+
+            <div id="status"></div>
+
+            <script language="javascript">
+
+                $("#status").text("Loading.....");
+                $.get("GetFeedbackByJason", BindDada, null);
+
+                function BindDada(feedbacks) {
+                    var tbl = $("#feedbackTable");
+
+                    for (k = 0; k < feedbacks.length; k++) {
+                        var newRow = "<tr>"
+                            + "<td>" + feedbacks[k].name + "</td>"
+                            + "<td>" + feedbacks[k].feedback + "</td>"
+                            + "</tr>"
+
+                        tbl.append(newRow);
+                    }
+
+                    $("#status").text("");
+                }
+
+            </script>
+
+            @Html.Partial("DisplayLayout", Model)
+
+
+            }
+}
+
+

@@ -1,0 +1,26 @@
+﻿@model Project.Models.User
+@using Project.ModelView
+@{
+    ViewBag.Title = "WritingFeedback";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<h1>Writing Feedback</h1>
+<br />
+<div class="jumbotron">
+    <h3>You can share with us your feellings from our site , we will like to hear from you!</h3>
+    <br />
+    @using (Html.BeginForm("Submit", "Home", Model, FormMethod.Post))
+    {
+        <i style="font-size: 20px"> Your Name: </i> <input id="Text1" name="Name" type="text" /><a style="color:red;font:bold 20px italic">&nbsp;@TempData["ErorName"]</a>
+        <br />
+        <i style="font-size: 20px"> Write Your Feedback: </i> <textarea id="TextArea1" name="Feedback" rows="6" cols="50"></textarea><a style="color:red;font:bold 20px italic">&nbsp;@TempData["ErorFeedback"]</a>
+        <br />
+        <input id="Submit2" type="submit" value="Enter" />
+    }
+</div>
+
+@Html.Partial("DisplayLayout", Model)
+

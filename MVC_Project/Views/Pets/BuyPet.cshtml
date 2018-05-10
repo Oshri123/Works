@@ -1,0 +1,76 @@
+﻿@model Project.Models.User
+
+@{
+    ViewBag.Title = "BuyPet";
+}
+
+<h1 style="font-size:70px">Buy Pet</h1>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<style type="text/css">
+    table {
+        font-size: 20px;
+        font-family: "times new roman";
+        color: black;
+    }
+
+    td {
+        font-size: 20px;
+        font-family: "times new roman";
+        color: black;
+    }
+</style>
+
+@*<h1 style="color:black">Pets Data</h1>*@
+<hr size="2" width="320" align="left" color="black" />
+
+<table border="3" id="PetsTable" style="color:white">
+    <tr>
+        <th><span style="color:green">pet Type</span></th>
+        <th><span style="color:green">pet Name</span></th>
+        <th><span style="color:green">pet Price</span></th>
+        <th><span style="color:green">pet ID</span></th>
+        <th><span style="color:green">Availability</span></th>
+    </tr>
+</table>
+<div id="status"></div>
+
+
+<script language="javascript">
+    $("#status").text("Loading.....");
+
+    $.get("GetPetsByJason", null, ShowPets);
+
+    function ShowPets(pets) {
+        var tbl = $("#PetsTable");
+
+        for (k = 0; k < pets.length; k++) {
+            var newRow = "<tr>"
+                + "<td>" + pets[k].petType + "</td>"
+                + "<td>" + pets[k].petName + "</td>"
+                + "<td>" + pets[k].petPrice + "</td>"
+                + "<td>" + pets[k].petID + "</td>"
+                + "<td>" + pets[k].Availability + "</td>"
+                + "</tr>"
+
+            tbl.append(newRow);
+        }
+
+        $("#status").text("");
+    }
+
+</script>
+<br />
+
+@using (Html.BeginForm("sellingPets", "Pets", Model, FormMethod.Post))
+{
+    <div style="font-size:25px;color:dimgrey">
+        Select the ID of the pet that you want to buy:
+        <div style="color:red;font-size:20px"><input id="Text1" type="text" name="id" /><input id="Submit1" type="submit" value="Buy Pet" /> @TempData["PetsError"]</div>
+    </div>
+}
+
+@Html.Partial("DisplayLayout", Model)

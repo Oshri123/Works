@@ -1,0 +1,38 @@
+﻿@model Project.Models.VMUser
+@using Project.Models
+@{
+    ViewBag.Title = "ShowShoppingCart";
+}
+
+<h1>Your Shopping Cart</h1>
+
+@{
+    WebGrid obj = new WebGrid(Model.shoppingCart);
+}
+@{
+    if (Model.shoppingCart == null)
+    {
+        <h2 style="color:red">You have not bought a pet yet!</h2>
+    }
+    else
+    {
+        <div id="gridContent" style=" padding:20px; ">
+            @obj.GetHtml(
+                tableStyle: "webgrid-table",
+                headerStyle: "webgrid-header",
+                alternatingRowStyle: "webgrid-alternating-row",
+                mode: WebGridPagerModes.All,
+                columns: obj.Columns(
+                obj.Column(columnName: "petType", header: "petType", canSort: true),
+                obj.Column("petName", "petName", canSort: true, style: "petName"),
+                obj.Column("petID", "petID", canSort: true, style: "petID")
+                ))
+        </div>
+    }
+}
+
+
+@{
+    User user = Model.us;
+    @Html.Partial("DisplayLayout", user)
+}

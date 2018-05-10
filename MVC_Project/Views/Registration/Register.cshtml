@@ -1,0 +1,38 @@
+﻿@model Project.ModelView.UserViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<div>
+    <h1 style="font-size: 70px">Registration:</h1>
+
+    @using (Html.BeginForm("Submit", "Registration", FormMethod.Post))
+    {
+
+        <div class="jumbotron">
+            <div class="col">
+            <i style="font-size: 20px">User Name:&nbsp;</i> @Html.TextBoxFor(m => m.userInfo.UserName) @Html.ValidationMessageFor(x => x.userInfo.UserName)
+            <br />
+            <i style="font-size: 20px">Password:&nbsp;&nbsp;&nbsp;</i> @Html.TextBoxFor(m => m.userInfo.Password) @Html.ValidationMessageFor(x => x.userInfo.Password)
+            <br />
+            <i style="font-size: 20px"> First Name:</i>&nbsp; @Html.TextBoxFor(m => m.userInfo.FirstName) @Html.ValidationMessageFor(x => x.userInfo.FirstName)
+            <br />
+            <i style="font-size: 20px"> Last Name:&nbsp;</i> @Html.TextBoxFor(m => m.userInfo.LastName) @Html.ValidationMessageFor(x => x.userInfo.LastName)
+            <br />
+            <i style="font-size: 20px"> Loved Pet:&nbsp;&nbsp;</i> @Html.TextBoxFor(m => m.userInfo.LovedPet) @Html.ValidationMessageFor(x => x.userInfo.LovedPet)
+            <br />
+            </div>
+            <input id="Submit" type="submit" value="Register" />
+        </div>
+
+    }
+
+    @Html.Partial("DisplayLayout", Model)
+
+
+</div>

@@ -1,0 +1,30 @@
+﻿@model Project.Models.User
+
+@{
+    ViewBag.Title = "Enter";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<div>
+    <h1 style="font-size: 70px">Login:</h1>
+    @using (Html.BeginForm("Login", "Registration", FormMethod.Post))
+    {
+        <i style="font-size: 30px"> First Name: </i> @Html.TextBoxFor(m => m.UserName) @Html.ValidationMessageFor(x => x.UserName) <div style="color:red;font-size:20px">@TempData["NameLoginError"]</div>
+        <br />
+        <i style="font-size: 30px"> Password: </i> @Html.TextBoxFor(m => m.Password) @Html.ValidationMessageFor(x => x.Password) <div style="color:red;font-size:20px">@TempData["PasswordLoginError"]</div>
+        <br />
+            <input id="Submit" type="submit" value="Login &raquo;" style="font-size:30px" class="btn btn-default" />
+    }
+    <br />
+    <p>Dont have account?</p>
+    <p>You can register now:<a style="font-size:20px" class="btn btn-default" href="../Registration/Register">&nbsp;Register &raquo;</a></p>
+
+    <img src="http://the-gurukul.co.in/images/login.jpg"
+         width="254" height="254" alt="webmaster logo" style="align-items:center" />
+    <br />
+</div>
+
+@Html.Partial("DisplayLayout", Model)

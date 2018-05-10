@@ -1,0 +1,27 @@
+﻿@model Project.Models.User
+@{
+    ViewBag.Title = "Contact";
+}
+<div class="jumbotron">
+
+    <h1>@ViewBag.Title.</h1>
+    <h3>@ViewBag.Message</h3>
+
+    <address>
+        Shay Miara - 305551160
+        <br />
+        Oshry Nahmani - 204566194
+        <br />
+        Netivot
+        <br />
+        <abbr title="Phone">Phone:</abbr>
+        052-780-9886
+    </address>
+
+    <address>
+        <strong>Oshri Mail:</strong>   <a href="mailto:oshrinahmani1993.com">oshrinahmani1993.com</a><br />
+        <strong>Shay Mail:</strong> <a href="mailto:shaymi1@ac.se.ac.com">shayme@ac.se.ac.com</a>
+    </address>
+</div>
+
+@Html.Partial("DisplayLayout", Model)

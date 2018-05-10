@@ -1,0 +1,52 @@
+﻿@model Project.Models.VMUser
+@using Project.Models
+
+@{
+    ViewBag.Title = "AddPets";
+}
+
+@{
+    if (Model.us.IsManager == 0)
+    {
+        @Html.Partial("EccessError")
+
+    }
+    else
+    {
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+        <h1>Add Pets</h1>
+
+        using (Html.BeginForm("SubmitPets", "Pets", Model.us, FormMethod.Post))
+        {
+            <div class="jumbotron">
+                <div class="col">
+                    <i style="font-size: 20px">Pet Type:&nbsp;</i>
+                    <select id="Select1" name="select" class="btn btn-default" style="font-size:20px">
+                        <option>Cat</option>
+                        <option>Dog</option>
+                        <option>Fish</option>
+                    </select>
+                    <br />
+                    <i style="font-size: 20px">Pet Name:&nbsp;&nbsp;&nbsp;</i> @Html.TextBoxFor(m => m.pet.petName) @Html.ValidationMessageFor(x => x.pet.petName)
+                    <br />
+                    <i style="font-size: 20px"> Pet ID:</i>&nbsp; @Html.TextBoxFor(m => m.pet.petID) @Html.ValidationMessageFor(x => x.pet.petID)
+                    <br />
+                    <i style="font-size: 20px"> Price:&nbsp;</i> @Html.TextBoxFor(m => m.pet.petPrice) @Html.ValidationMessageFor(x => x.pet.petPrice)
+                    <br />
+                </div>
+                <input id="Submit" type="submit" value="Add Pets" />
+            </div>
+
+        }
+
+
+        User us = Model.us;
+
+        @Html.Partial("DisplayLayout", us);
+    }
+}
+
+

@@ -1,0 +1,23 @@
+﻿@model Project.Models.User
+@{
+    ViewBag.Title = "About";
+}
+<div class="jumbotron">
+    <p class="lead">
+        <h1>@ViewBag.Title.</h1>
+        <br />
+        <h3>@ViewBag.Message</h3>
+
+    Use this area to provide additional information.</p>
+
+</div>
+
+@Html.Partial("DisplayLayout", Model)
+
+@*<div class="jumbotron">
+        <p class="lead">
+
+            <br />
+            in this site you can buy cars online!
+        </p>
+    </div>*@
